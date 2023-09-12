@@ -7,12 +7,109 @@
 
 
 
+
+
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
     data in order to use it to build your component function
 
 */
+
+function github(image , name,bio,fllowe) {
+
+
+  // crate elemnet you need 
+
+  let main = document.createElement("div")
+  let GITHUBIMGE = document.createElement("img")
+  let seconde = document.createElement("div")
+
+  let h3 =   document.createElement("h3")
+  let p =   document.createElement("p")
+  let puser =   document.createElement("p")
+
+  let puserfllowe =   document.createElement("p")
+
+
+
+
+  //  waa isku xuaray waxa samysaty
+ 
+
+  main.appendChild(GITHUBIMGE)
+  main.append(seconde)
+  main.append(h3)
+  main.append(p)
+  main.appendChild(puser)
+  main.appendChild(puserfllowe)
+  console.log(main)
+  seconde.appendChild(h3)
+  seconde.appendChild(p)
+  seconde.appendChild(puser)
+  seconde.appendChild(puserfllowe)
+  
+
+
+
+// calss ama css baa ku adaray
+
+
+
+  main.classList.add("card")
+  seconde.classList.add("card-info")
+
+  p.classList.add("username")
+  h3.classList.add("name")
+
+
+
+  
+
+  // wxaan isku xiray ilemnte sameyy iyo parametr function
+  
+GITHUBIMGE.src = image
+p.textContent = name
+puser.textContent =  bio
+puserfllowe.textContent = fllowe
+
+
+
+ // ka dibna dhif wayn ba so ciliyy
+  return main
+ 
+ 
+  
+}
+
+
+let usernames = ['Abdrhmaan' , "duraanali" , "	Leoyoon5" , "	Muniir1",'Abdrhmaan' , "duraanali" , "	Leoyoon5" , "	Muniir1"] 
+
+
+let card = document.querySelector(".cards")
+
+
+ usernames.forEach((username) => {
+  axios.get(`https://api.github.com/users/${username}`).then((res) => {
+  console.log(res.data
+    )
+    let xaan = res.data.avatar_url
+    let name = res.data.login
+    let bio = res.data.bio
+    let floowe = res.data.followers
+
+
+
+
+   card.appendChild(github(xaan,name,bio,floowe))
+
+})
+
+ })  
+
+
+
+
 
 
 /*
